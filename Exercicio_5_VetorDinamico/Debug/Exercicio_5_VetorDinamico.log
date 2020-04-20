@@ -1,0 +1,5 @@
+﻿  VetorDinamico.cpp
+C:\Users\Jvmelo\source\repos\Exercicio_5_VetorDinamico\Exercicio_5_VetorDinamico\VetorDinamico.h(120,16): warning C4553: '==': o resultado da expressão não usado; você pretendia que fosse '='?
+C:\Users\Jvmelo\source\repos\Exercicio_5_VetorDinamico\Exercicio_5_VetorDinamico\VetorDinamico.h(67): warning C4715: 'VetorDinamico::contains': nem todos os caminhos de controle retornam um valor
+C:\Users\Jvmelo\source\repos\Exercicio_5_VetorDinamico\Exercicio_5_VetorDinamico\VetorDinamico.h(79): warning C4715: 'VetorDinamico::get': nem todos os caminhos de controle retornam um valor
+  Exercicio_5_VetorDinamico.vcxproj -> C:\Users\Jvmelo\source\repos\Exercicio_5_VetorDinamico\Debug\Exercicio_5_VetorDinamico.exe
