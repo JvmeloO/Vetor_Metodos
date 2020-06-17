@@ -1,2 +1,3 @@
 # Vetor_Metodos
-Implementação dos métodos de um vetor em c++. 
+Implementação dos métodos de uma lista para uso em vetores com c++.
+
