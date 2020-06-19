@@ -7,7 +7,7 @@ public:
 	~VetorDinamico();
 	int* vetorAdd;
 	int cont = 0;
-	bool permitirDuplicado = false;
+	int currentSize = 10;
 	void add(int element);
 	void add(int index, int element);
 	void clear();
@@ -32,14 +32,25 @@ inline VetorDinamico::~VetorDinamico()
 
 void VetorDinamico::add(int element)
 {
-	this->vetorAdd[cont] = element;
-	this->cont++;
+	if (cont > currentSize)
+	{
+		int* vetorTemp = new int[cont];
+		for (size_t i = 0; i < cont; i++)
+		{
+			vetorTemp[i] = vetorAdd[i];
+		}
+		currentSize++;
+		vetorAdd = new int[currentSize];
+		vetorAdd = vetorTemp;
+	}
+	vetorAdd[cont] = element;
+	cont++;
 }
 
 
 void VetorDinamico::add(int index, int element)
 {
-	this->vetorAdd[index] = element;
+	vetorAdd[index] = element;
 }
 
 void VetorDinamico::clear()
@@ -87,19 +98,11 @@ int VetorDinamico::indexOf(int element)
 
 bool VetorDinamico::IsEmpty()
 {
-	int contEmpty = 0;
-	for (int i = 0; i < cont; i++)
-	{
-		if (vetorAdd[i] == NULL)
-		{
-			contEmpty++;
-		}
-	}
-	if (contEmpty == 0)
+	if (cont == 0)
 	{
 		return true;
 	}
-	else
+	else 
 	{
 		return false;
 	}
@@ -117,7 +120,6 @@ void VetorDinamico::Remove(int index)
 			indexV++;
 		}
 	}
-	delete[] vetorAdd;
 	vetorAdd = new int[cont];
 	vetorAdd = vetorRemove;
 	cont--;
