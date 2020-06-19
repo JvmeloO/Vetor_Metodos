@@ -8,14 +8,14 @@ public:
 	int* vetorAdd;
 	int cont = 0;
 	bool permitirDuplicado = false;
-	bool add(int element);
+	void add(int element);
 	void add(int index, int element);
 	void clear();
 	bool contains(int element);
 	int get(int index);
 	int indexOf(int element);
 	bool IsEmpty();
-	int Remover(int index);
+	void Remove(int index);
 	int Size();
 	void printar();
 };
@@ -30,11 +30,10 @@ inline VetorDinamico::~VetorDinamico()
 {
 }
 
-bool VetorDinamico::add(int element)
+void VetorDinamico::add(int element)
 {
 	this->vetorAdd[cont] = element;
 	this->cont++;
-	return 0;
 }
 
 
@@ -46,7 +45,8 @@ void VetorDinamico::add(int index, int element)
 void VetorDinamico::clear()
 {
 	delete[] vetorAdd;
-	vetorAdd = new int[10];
+	vetorAdd = new int[cont];
+	cont = 0;
 }
 
 bool VetorDinamico::contains(int element)
@@ -55,15 +55,10 @@ bool VetorDinamico::contains(int element)
 	{
 		if (element == vetorAdd[i])
 		{
-			std::cout << "true" << "\n";
-			return 0;
-		}
-		else
-		{
-			std::cout << "false" << "\n";
-			return 0;
+			return true;
 		}
 	}
+	return false;
 }
 
 int VetorDinamico::get(int index)
@@ -72,10 +67,10 @@ int VetorDinamico::get(int index)
 	{
 		if (index == i)
 		{
-			std::cout << vetorAdd[i] << "\n";
-			return 0;
+			return vetorAdd[i];
 		}
 	}
+	return -1;
 }
 
 int VetorDinamico::indexOf(int element)
@@ -84,10 +79,10 @@ int VetorDinamico::indexOf(int element)
 	{
 		if (vetorAdd[i] == element)
 		{
-			std::cout << i << "\n";
+			return i;
 		}
 	}
-	return 0;
+	return -1;
 }
 
 bool VetorDinamico::IsEmpty()
@@ -95,38 +90,42 @@ bool VetorDinamico::IsEmpty()
 	int contEmpty = 0;
 	for (int i = 0; i < cont; i++)
 	{
-		if (vetorAdd[i] != NULL)
+		if (vetorAdd[i] == NULL)
 		{
 			contEmpty++;
 		}
 	}
-	if (contEmpty != 0)
+	if (contEmpty == 0)
 	{
-		std::cout << "false" << "\n";
+		return true;
 	}
 	else
 	{
-		std::cout << "true" << "\n";
+		return false;
 	}
-	return 0;
 }
 
-int VetorDinamico::Remover(int index)
+void VetorDinamico::Remove(int index)
 {
+	int* vetorRemove = new int[cont];
+	int indexV = 0;
 	for (int i = 0; i < cont; i++)
 	{
-		if (index == i)
+		if (i != index)
 		{
-			vetorAdd[i] == NULL;
+			vetorRemove[indexV] = vetorAdd[i];
+			indexV++;
 		}
 	}
-	return 0;
+	delete[] vetorAdd;
+	vetorAdd = new int[cont];
+	vetorAdd = vetorRemove;
+	cont--;
 }
 
 int VetorDinamico::Size()
 {
-	std::cout << cont;
-	return 0;
+	return cont;
 }
 
 void VetorDinamico::printar()
